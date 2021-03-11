@@ -6,36 +6,40 @@ import java.util.Map;
 public class Main {
 
 	public static void main(String[] args) {
-
 		
-		Person p = new Person("Diana");
-		BankAccount account = new BankAccount("INGB123242344", p);
 		
-		account.deposit(100);
-		try {
-			account.withdraw(30);
-			account.withdraw(40);
-			account.withdraw(70);
+		Map<Person, Receivable> employees = new HashMap<>();
 
-		} catch (InsuficientFundsException e) {
-			System.out.println(e.getMessage());
+		Person p1 = new Person("Chuck Norris");
+		CreditBankAccount b1 = new CreditBankAccount("RFZ123123123", p1, -500);
+		
+		Person p2 = new Person("Arnold");
+		DebitBankAccount b2 = new FeeBankAccount("INGB12432423", p2);
+		
+		Person p3 = new Person("Van Damme");
+		DebitBankAccount b3 = new DebitBankAccount("BT12312323", p3);
+		
+		
+		employees.put(p1, b1);
+		employees.put(p2, b2);
+		employees.put(p3, b3);
+		
+		for(Receivable a : employees.values()) {
+			a.deposit(1000);
 		}
-	
-
-		Map<Person, BankAccount> employees = new HashMap<>();
 		
-		Person p1 = new Person("Ana Norris");
-		BankAccount b1 = new BankAccount("RF12345678", p1);
+		Map<Person, Payable> union = new HashMap<>();
 		
-		Person p2 = new Person("Archie Norris");
-		Account b2 = new BankAccount("BRD1234567", p2);
+		union.put(p2, b2);
+		union.put(p3, b3);
 		
-		Person p3 = new Person("Yogi");
-		Account b3 = new BankAccount("BEAR234567", p3);
-		
-		employees.put(p1,b1);
-		
-		System.out.println(account.getBalance());
+		for(Payable a : union.values()) {
+			try {
+				a.withdraw(10);
+			} catch (InsuficientFundsException ex) {
+				System.out.println(ex.getMessage());
+			}
+		}
 		
 	}
 
