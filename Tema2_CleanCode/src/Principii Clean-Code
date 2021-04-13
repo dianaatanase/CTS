@@ -1,0 +1,24 @@
+
+NOTITE:
+ 
+ 
+	DRY - don't repeat yourself
+-> one screen functions : cat mai mici si mai simple
+-> fara copy paste => implementari de functii (pt a nu afecta atunci cand trebuie facute modificari)
+
+	KISS -keep it simple and stupid
+->clase cu nr limitat de atribute
+-> metode scurte, care fac un singur lucru
+-> param putini
+
+	YAGNI - you ain't gonna need it
+-> nu pastram ce nu ne trebuie
+
+	SOLID
+- Single - responsability => derivat din KISS
+							-> clasele sa gestioneze un singur lucru(ex: Student, DatePersonale, DateExamen etc.)
+							-> un singur motiv sa se modifice
+- Open -closed  			-> clasele permit sa fie extinse, dar nu modificate
+- Liskov subtitution		-> folosim interfete implementate de mai multe clase (adaptam la context niste notiuni generice => supradefinire)
+- Interface segregation		-> mai multe interfete mai mici 
+- Dependency inversion		-> programeaza prin interfete, nu prin implementari

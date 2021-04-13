@@ -37,6 +37,7 @@ public class Model3DCaracter implements Cloneable {
 		copie.inaltime = this.inaltime;
 		copie.puncte = (ArrayList<Integer>) this.puncte.clone();
 		return copie;
+		
 	}
 	
 	
