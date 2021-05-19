@@ -11,7 +11,7 @@ public class OperatiiMatematice {
 	public static double impartire(int a, int b) throws ExceptieImpartireLaZero {
 		if(b == 0)
 			throw new ExceptieImpartireLaZero();
-		return a/b;
+		return (double)a/b;
 	}
 }
 
