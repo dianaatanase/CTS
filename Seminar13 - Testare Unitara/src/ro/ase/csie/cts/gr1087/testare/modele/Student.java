@@ -44,7 +44,10 @@ public class Student {
 
 
 	public void setVarsta(int varsta)throws ExceptieVarsta {
-		varsta = varsta;
+		if(varsta < Student.MIN_VARSTA || varsta >=Student.MAX_VARSTA ) {
+			throw new ExceptieVarsta();
+		}
+		this.varsta = varsta;
 	}
 
 
