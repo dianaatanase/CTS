@@ -66,7 +66,7 @@ public class Student {
 	
 
 	public float getMedie() {
-		int sum = 0;
+		float sum = 0;
 		for(int grade : this.note) {
 			sum += grade;
 		}

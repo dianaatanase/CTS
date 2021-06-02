@@ -100,4 +100,76 @@ public class TestStudentAlteTeste {
 		assertArrayEquals("Test modificare note din exterior", noteStudent, noteStudentDupaModificare);
 	}
 	
+	@Test
+	public void testGetMediePerformance() throws ExceptieNote {
+		ArrayList<Integer> note = new ArrayList<>();
+		int nrNote = 1000000;
+		for(int i =0; i<nrNote; i++) {
+			note.add(Student.MAX_NOTA);
+		}
+		student.setNote(note);
+		
+		long tStart = System.currentTimeMillis();
+		float medieCalculata = student.getMedie();
+		long tFinal = System.currentTimeMillis();
+		
+		long durataMinima = 10;           //100 de milisecunde
+		long durata = tFinal - tStart;
+		if(durata <= durataMinima) {
+			assertTrue(true);
+		}
+		else {
+			fail("Testul a depasit durata minima.");
+		}
+	}
+	
+	@Test
+	public void testGetNotaMinimaInverse() throws ExceptieNote {
+		ArrayList<Integer> note = new ArrayList<>();
+		int nrNote = 10000;
+		Random random = new Random();
+		for(int i =0; i<nrNote; i++) {
+			note.add(random.nextInt(Student.MAX_NOTA+1));
+		}
+		student.setNote(note);
+		
+		int minimCalculat =student.getNotaMinima();
+		
+		//pt ca nu putem determina valoara estimata 
+		//verificam relatia dintre minim si valorile initiale
+		for(int i=0; i<nrNote; i++) {
+			if(minimCalculat > note.get(i)) {
+				fail("Minimul calculat nu este corect");
+			}
+		}
+		
+		assertTrue(true);
+	}
+	
+	@Test
+	public void testGetMedieCrossCheck() throws ExceptieNote {
+		ArrayList<Integer> note = new ArrayList<>();
+		int nrNote = 10;
+		Random random = new Random();
+		for(int i =0; i<nrNote; i++) {
+			note.add(random.nextInt(Student.MAX_NOTA+1));
+		}
+		student.setNote(note);
+		
+		float medieEstimata = getMedieVariantaInitiale(note);
+		float medieCalculata = student.getMedie();
+		
+		assertEquals("Valorile calculate de cele 2 functii nu sunt identice", medieEstimata, medieCalculata, 0);
+	}
+	
+	public float getMedieVariantaInitiale(ArrayList<Integer> valori) {
+		float suma =0;
+		for(int valoare:valori) {
+			suma+= valoare;
+		}
+		return suma/valori.size();
+	}
+	
 }
+
+
