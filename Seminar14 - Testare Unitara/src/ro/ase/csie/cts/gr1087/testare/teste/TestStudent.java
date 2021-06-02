@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
 import org.junit.Ignore;
+import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -16,6 +17,7 @@ import ro.ase.csie.cts.gr1087.testare.exceptii.ExceptieNote;
 import ro.ase.csie.cts.gr1087.testare.exceptii.ExceptieNume;
 import ro.ase.csie.cts.gr1087.testare.exceptii.ExceptieVarsta;
 import ro.ase.csie.cts.gr1087.testare.modele.Student;
+import ro.ase.csie.cts.gr1087.testare.teste.categorii.TesteImportante;
 
 class TestStudent {
 
@@ -104,7 +106,7 @@ class TestStudent {
 		}
 	}
 	
-	
+	@Category(TesteImportante.class)
 	@Test
 	public void getNotaMinimaOrderingSortateCrescator() throws ExceptieNote {
 		int notaMinima = 4;
@@ -118,6 +120,7 @@ class TestStudent {
 		assertEquals("Test cu note sortate crescator.", notaMinima, notaDeterminata);
 	}
 	
+	@Category(TesteImportante.class)
 	@Test
 	public void testGetNotaMinimaCardinalityZero() throws ExceptieNote {
 		ArrayList<Integer> note = new ArrayList<>();

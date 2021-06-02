@@ -10,10 +10,12 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import ro.ase.csie.cts.gr1087.testare.exceptii.ExceptieNote;
 import ro.ase.csie.cts.gr1087.testare.exceptii.ExceptieVarsta;
 import ro.ase.csie.cts.gr1087.testare.modele.Student;
+import ro.ase.csie.cts.gr1087.testare.teste.categorii.TesteImportante;
 
 public class TestStudentAlteTeste {
 	
@@ -146,6 +148,7 @@ public class TestStudentAlteTeste {
 		assertTrue(true);
 	}
 	
+	@Category(TesteImportante.class)
 	@Test
 	public void testGetMedieCrossCheck() throws ExceptieNote {
 		ArrayList<Integer> note = new ArrayList<>();
